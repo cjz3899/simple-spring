@@ -1,9 +1,12 @@
 package com.junzhecai.springframework.test.bean;
 
-public class UserService {
+public class UserService_01 {
     private String name;
 
-    public UserService(String name) {
+    public UserService_01() {
+    }
+
+    public UserService_01(String name) {
         this.name = name;
     }
 
@@ -21,7 +24,7 @@ public class UserService {
 
     @Override
     public String toString() {
-        return "UserService{" +
+        return "UserService_01{" +
                 "name='" + name + '\'' +
                 '}';
     }
