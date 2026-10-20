@@ -3,8 +3,10 @@
 
     <bean id="userDao" class="com.junzhecai.springframework.test.bean.UserDao"/>
 
-    <bean id="userService" class="com.junzhecai.springframework.test.bean.UserService_02">
+    <bean id="userService" class="com.junzhecai.springframework.test.bean.UserService_03">
         <property name="uId" value="10001"/>
+        <property name="company" value="腾讯"/>
+        <property name="location" value="深圳"/>
         <property name="userDao" ref="userDao"/>
     </bean>
 

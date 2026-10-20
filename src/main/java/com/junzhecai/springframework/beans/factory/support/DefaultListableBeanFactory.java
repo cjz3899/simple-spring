@@ -1,13 +1,14 @@
 package com.junzhecai.springframework.beans.factory.support;
 
 import com.junzhecai.springframework.beans.BeansException;
+import com.junzhecai.springframework.beans.factory.ConfigurableListableBeanFactory;
 import com.junzhecai.springframework.beans.factory.config.BeanDefinition;
 import com.junzhecai.springframework.beans.factory.config.ConfigurableBeanFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry, ConfigurableBeanFactory {
+public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry, ConfigurableBeanFactory, ConfigurableListableBeanFactory {
     private Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
 
     @Override
@@ -18,8 +19,25 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
     }
 
     @Override
+    public void preInstantiateSingletons() {
+        beanDefinitionMap.keySet().forEach(this::getBean);
+    }
+
+    @Override
     public boolean containsBeanDefinition(String beanName) {
         return beanDefinitionMap.containsKey(beanName);
+    }
+
+    @Override
+    public <T> Map<String, T> getBeansOfType(Class<T> type) {
+        Map<String, T> result = new HashMap<>();
+        beanDefinitionMap.forEach((beanName, beanDefinition) -> {
+            Class beanClass = beanDefinition.getBeanClass();
+            if (type.isAssignableFrom(beanClass)) {
+                result.put(beanName, (T) getBean(beanName));
+            }
+        });
+        return result;
     }
 
     @Override
@@ -31,4 +49,6 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
     public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition) {
         beanDefinitionMap.put(beanName, beanDefinition);
     }
+
+
 }
