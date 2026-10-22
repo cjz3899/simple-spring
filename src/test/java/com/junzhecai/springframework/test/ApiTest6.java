@@ -18,5 +18,4 @@ public class ApiTest6 {
         System.out.println("ApplicationContextAware：" + userService.getApplicationContext());
         System.out.println("BeanFactoryAware：" + userService.getBeanFactory());
     }
-
 }
