@@ -4,25 +4,26 @@ import com.junzhecai.springframework.beans.BeansException;
 import com.junzhecai.springframework.beans.factory.DisposableBean;
 import com.junzhecai.springframework.beans.factory.config.SingletonBeanRegistry;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
     protected static final Object NULL_OBJECT = new Object();
 
-    private Map<String, Object> singletonObjects = new HashMap<>();
+    private Map<String, Object> singletonObjects = new ConcurrentHashMap<>();
 
-    private final Map<String, DisposableBean> disposableBeans = new HashMap<>();
+    private final Map<String, DisposableBean> disposableBeans = new LinkedHashMap<>();
 
     @Override
     public Object getSingleton(String beanName) {
         return singletonObjects.get(beanName);
     }
 
-    protected void addSingleton(String beanName, Object singletonObject) {
+    public void registerSingleton(String beanName, Object singletonObject) {
         singletonObjects.put(beanName, singletonObject);
     }
 
