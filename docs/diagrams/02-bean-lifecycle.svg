@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1580" viewBox="0 0 1500 1580">
+<defs>
+        <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.07"/>
+        </filter><marker id="m94A3B8arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/></marker></defs>
+<rect width="1500" height="1580" fill="#F6F8FC"/>
+<text x="70" y="54" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="30" fill="#0F172A" font-weight="700" text-anchor="start">Bean 的一生：从一行 XML 到可用的对象</text>
+<text x="70" y="84" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start">以 ApiTest4#test_xml() 读取 springPostProcessor.xml 为例，跟着箭头走一遍</text>
+<circle cx="900" cy="76" r="5" fill="#10B981"/>
+<text x="912" y="80" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11" fill="#64748B" font-weight="400" text-anchor="start">读图纸</text>
+<circle cx="1050" cy="76" r="5" fill="#F59E0B"/>
+<text x="1062" y="80" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11" fill="#64748B" font-weight="400" text-anchor="start">改图纸 / 注册扩展点</text>
+<circle cx="1200" cy="76" r="5" fill="#0EA5E9"/>
+<text x="1212" y="80" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11" fill="#64748B" font-weight="400" text-anchor="start">造对象</text>
+<circle cx="1350" cy="76" r="5" fill="#F43F5E"/>
+<text x="1362" y="80" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11" fill="#64748B" font-weight="400" text-anchor="start">入池</text>
+<rect x="120" y="150" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="160" width="4" height="50" rx="2" fill="#10B981"/>
+<circle cx="88" cy="185.0" r="15" fill="#10B981"/>
+<text x="88" y="190.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">1</text>
+<text x="142" y="179" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="13" fill="#0F172A" font-weight="600" text-anchor="start">new ClassPathXmlApplicationContext(&quot;classpath:springPostProcessor.xml&quot;)</text>
+<text x="142" y="201" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">构造器 = 加载配置 + 启动容器，程序员只写这一行</text>
+<line x1="410" y1="220" x2="410" y2="242" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="242" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="252" width="4" height="50" rx="2" fill="#10B981"/>
+<circle cx="88" cy="277.0" r="15" fill="#10B981"/>
+<text x="88" y="282.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">2</text>
+<text x="142" y="271" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">refresh()</text>
+<text x="142" y="293" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">AbstractApplicationContext：容器启动的 5 个步骤</text>
+<line x1="410" y1="312" x2="410" y2="334" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="334" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="344" width="4" height="50" rx="2" fill="#10B981"/>
+<circle cx="88" cy="369.0" r="15" fill="#10B981"/>
+<text x="88" y="374.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">3</text>
+<text x="142" y="363" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">refreshBeanFactory()</text>
+<text x="142" y="385" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">new DefaultListableBeanFactory()，此时肚子还是空的</text>
+<line x1="410" y1="404" x2="410" y2="426" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="426" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="436" width="4" height="50" rx="2" fill="#10B981"/>
+<circle cx="88" cy="461.0" r="15" fill="#10B981"/>
+<text x="88" y="466.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">4</text>
+<text x="142" y="455" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">loadBeanDefinitions(configLocations)</text>
+<text x="142" y="477" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">创建 XmlBeanDefinitionReader(beanFactory, this)</text>
+<line x1="410" y1="496" x2="410" y2="518" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="518" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="528" width="4" height="50" rx="2" fill="#10B981"/>
+<circle cx="88" cy="553.0" r="15" fill="#10B981"/>
+<text x="88" y="558.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">5</text>
+<text x="142" y="547" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">解析 &lt;bean&gt; → BeanDefinition → 注册</text>
+<text x="142" y="569" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">把 id / class / property / ref 翻译成“图纸”，存进 Map</text>
+<line x1="410" y1="588" x2="410" y2="610" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="610" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="620" width="4" height="50" rx="2" fill="#F59E0B"/>
+<circle cx="88" cy="645.0" r="15" fill="#F59E0B"/>
+<text x="88" y="650.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">6</text>
+<text x="142" y="639" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">invokeBeanFactoryPostProcessors()</text>
+<text x="142" y="661" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">实例化 FPP 并回调：此刻改的还是 BeanDefinition</text>
+<line x1="410" y1="680" x2="410" y2="702" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="702" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="712" width="4" height="50" rx="2" fill="#F59E0B"/>
+<circle cx="88" cy="737.0" r="15" fill="#F59E0B"/>
+<text x="88" y="742.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">7</text>
+<text x="142" y="731" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">registerBeanPostProcessors()</text>
+<text x="142" y="753" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">实例化 BPP，放进 factory 的 List 里待命</text>
+<line x1="410" y1="772" x2="410" y2="794" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="794" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="804" width="4" height="50" rx="2" fill="#0EA5E9"/>
+<circle cx="88" cy="829.0" r="15" fill="#0EA5E9"/>
+<text x="88" y="834.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">8</text>
+<text x="142" y="823" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">preInstantiateSingletons()</text>
+<text x="142" y="845" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">遍历所有 beanName，逐个 getBean</text>
+<line x1="410" y1="864" x2="410" y2="886" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="886" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="896" width="4" height="50" rx="2" fill="#0EA5E9"/>
+<circle cx="88" cy="921.0" r="15" fill="#0EA5E9"/>
+<text x="88" y="926.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">9</text>
+<text x="142" y="915" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">getBean(name) → doGetBean(name)</text>
+<text x="142" y="937" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">第一步永远是查单例池：命中就直接返回</text>
+<line x1="410" y1="956" x2="410" y2="978" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="978" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="988" width="4" height="50" rx="2" fill="#0EA5E9"/>
+<circle cx="88" cy="1013.0" r="15" fill="#0EA5E9"/>
+<text x="88" y="1018.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">10</text>
+<text x="142" y="1007" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">createBeanInstance()</text>
+<text x="142" y="1029" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">InstantiationStrategy：反射 new 或 CGLIB 生成子类</text>
+<line x1="410" y1="1048" x2="410" y2="1070" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="1070" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="1080" width="4" height="50" rx="2" fill="#0EA5E9"/>
+<circle cx="88" cy="1105.0" r="15" fill="#0EA5E9"/>
+<text x="88" y="1110.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">11</text>
+<text x="142" y="1099" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">applyPropertyValues()</text>
+<text x="142" y="1121" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">遇到 BeanReference → 递归 getBean(ref) → setFieldValue</text>
+<line x1="410" y1="1140" x2="410" y2="1162" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="1162" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="1172" width="4" height="50" rx="2" fill="#0EA5E9"/>
+<circle cx="88" cy="1197.0" r="15" fill="#0EA5E9"/>
+<text x="88" y="1202.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">12</text>
+<text x="142" y="1191" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">initializeBean()</text>
+<text x="142" y="1213" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">BPP before → init-method（暂空）→ BPP after</text>
+<line x1="410" y1="1232" x2="410" y2="1254" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="1254" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="1264" width="4" height="50" rx="2" fill="#F43F5E"/>
+<circle cx="88" cy="1289.0" r="15" fill="#F43F5E"/>
+<text x="88" y="1294.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">13</text>
+<text x="142" y="1283" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">addSingleton(name, bean)</text>
+<text x="142" y="1305" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">key=beanName，value=实例，放进单例池</text>
+<line x1="410" y1="1324" x2="410" y2="1346" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#m94A3B8arrow)" stroke-linecap="round"/>
+<rect x="120" y="1346" width="600" height="70" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<rect x="120" y="1356" width="4" height="50" rx="2" fill="#F43F5E"/>
+<circle cx="88" cy="1381.0" r="15" fill="#F43F5E"/>
+<text x="88" y="1386.0" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">14</text>
+<text x="142" y="1375" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="14.5" fill="#0F172A" font-weight="600" text-anchor="start">返回对象 / 下次 getBean 直接命中</text>
+<text x="142" y="1397" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start">两次 getBean 拿到的是同一个对象</text>
+<rect x="760" y="514" width="640" height="66" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<path d="M760,540 L750,547 L760,554 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="760" y="522" width="4" height="50" rx="2" fill="#10B981"/>
+<text x="778" y="540" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#10B981" font-weight="700" text-anchor="start">关键点 ①  只有图纸</text>
+<text x="778" y="562" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.2" fill="#475569" font-weight="400" text-anchor="start">这一刻容器里只有 BeanDefinition；UserService 连影子都没有，更没有属性值。</text>
+<rect x="760" y="606" width="640" height="66" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<path d="M760,632 L750,639 L760,646 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="760" y="614" width="4" height="50" rx="2" fill="#F59E0B"/>
+<text x="778" y="632" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#F59E0B" font-weight="700" text-anchor="start">关键点 ②  改图纸</text>
+<text x="778" y="654" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.2" fill="#475569" font-weight="400" text-anchor="start">MyBeanFactoryPostProcessor 把 company 从“腾讯”改成“改为B站”，后面造出的对象才生效。</text>
+<rect x="760" y="882" width="640" height="66" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<path d="M760,908 L750,915 L760,922 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="760" y="890" width="4" height="50" rx="2" fill="#0EA5E9"/>
+<text x="778" y="908" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#0EA5E9" font-weight="700" text-anchor="start">关键点 ③  先查缓存</text>
+<text x="778" y="930" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.2" fill="#475569" font-weight="400" text-anchor="start">只要池里有，就直接返回同一个对象；singleton 是默认作用域。</text>
+<rect x="760" y="974" width="640" height="66" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<path d="M760,1000 L750,1007 L760,1014 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="760" y="982" width="4" height="50" rx="2" fill="#0EA5E9"/>
+<text x="778" y="1000" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#0EA5E9" font-weight="700" text-anchor="start">关键点 ④  怎么造</text>
+<text x="778" y="1022" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.2" fill="#475569" font-weight="400" text-anchor="start">默认 CglibSubclassingInstantiationStrategy：造出来的是子类对象，所以 Bean 类不能是 final。</text>
+<rect x="760" y="1066" width="640" height="66" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<path d="M760,1092 L750,1099 L760,1106 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="760" y="1074" width="4" height="50" rx="2" fill="#0EA5E9"/>
+<text x="778" y="1092" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#0EA5E9" font-weight="700" text-anchor="start">关键点 ⑤  依赖注入</text>
+<text x="778" y="1114" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.2" fill="#475569" font-weight="400" text-anchor="start">userDao 早已在池中，这里取出引用塞进字段——这就是“注入”真正发生的一刻。</text>
+<rect x="760" y="1158" width="640" height="66" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<path d="M760,1184 L750,1191 L760,1198 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="760" y="1166" width="4" height="50" rx="2" fill="#14B8A6"/>
+<text x="778" y="1184" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#14B8A6" font-weight="700" text-anchor="start">关键点 ⑥  出厂改装</text>
+<text x="778" y="1206" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.2" fill="#475569" font-weight="400" text-anchor="start">BPP before 把 location 改成“改为：上海”；BPP after 可以返回代理对象——AOP 的入口。</text>
+<rect x="760" y="1250" width="640" height="66" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#sh)"/>
+<path d="M760,1276 L750,1283 L760,1290 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="760" y="1258" width="4" height="50" rx="2" fill="#F43F5E"/>
+<text x="778" y="1276" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#F43F5E" font-weight="700" text-anchor="start">关键点 ⑦  入池</text>
+<text x="778" y="1298" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="11.2" fill="#475569" font-weight="400" text-anchor="start">所有 Bean 默认都进单例池；XML 里的 prototype 常量目前还没有真正实现。</text>
+<rect x="70" y="1450" width="1360" height="104" rx="14" fill="#0F172A" stroke="#0F172A" stroke-width="1" filter="url(#sh)"/>
+<text x="96" y="1482" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="13" fill="#94A3B8" font-weight="600" text-anchor="start">一句话记住这条链</text>
+<text x="96" y="1512" font-family="'SF Mono',Menlo,Consolas,'PingFang SC',monospace" font-size="20" fill="#FFFFFF" font-weight="600" text-anchor="start">Resource  →  BeanDefinition  →  BeanFactory  →  Bean  →  单例池</text>
+<text x="96" y="1538" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12.5" fill="#CBD5E1" font-weight="400" text-anchor="start">BeanDefinition 是图纸，BeanFactory 是工厂，BeanPostProcessor 是出厂前后的改装工位。</text>
+</svg>

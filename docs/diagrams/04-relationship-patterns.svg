@@ -1,0 +1,377 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1640" height="1610" viewBox="0 0 1640 1610">
+<defs>
+  <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.07"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#64748B"/>
+  </marker>
+  <marker id="impl" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse">
+    <path d="M1,1 L11,6 L1,11 z" fill="#FFFFFF" stroke="#475569" stroke-width="1.3"/>
+  </marker>
+</defs>
+<rect width="1640" height="1610" fill="#F6F8FC"/>
+
+<!-- ============ 标题 ============ -->
+<text x="60" y="56" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="30" fill="#0F172A" font-weight="700">simple-spring 项目关系图 &amp; 设计模式</text>
+<text x="60" y="86" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" fill="#475569">一个手写的迷你版 Spring：四层结构，从「你写的代码」一路下沉到「读文件」，中间藏着 8 个经典设计模式</text>
+<text x="1580" y="52" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12.5" fill="#64748B" text-anchor="end">实线箭头 = 调用 / 依赖　　空心三角 = 继承 / 实现</text>
+<text x="1580" y="76" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12.5" fill="#64748B" text-anchor="end">框里的 ❶～❽ 对应下方的「设计模式速查表」</text>
+
+<!-- ============ Band 1 · 使用层 ============ -->
+<rect x="60" y="120" width="1520" height="140" rx="18" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="60" y="138" width="5" height="104" rx="2.5" fill="#F59E0B"/>
+<circle cx="100" cy="150" r="14" fill="#F59E0B"/>
+<text x="100" y="155" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">1</text>
+<text x="124" y="156" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="18" fill="#0F172A" font-weight="700">使用层：你写的代码（业务 Bean + 测试入口 + 扩展实现）</text>
+<text x="1556" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#64748B" text-anchor="end">src/test/java · 普通 JavaBean，零侵入，却被容器创建、装配、调用</text>
+
+<rect x="90" y="172" width="345" height="72" rx="12" fill="#FFFBEB" stroke="#FDE68A" filter="url(#sh)"/>
+<text x="108" y="196" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" fill="#92400E" font-weight="600">ApiTest8 / main()</text>
+<text x="108" y="218" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#78350F">入口：new 容器 → getBean → 调业务方法</text>
+<text x="108" y="235" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#78350F">全程看不到 new 业务对象</text>
+
+<rect x="465" y="172" width="345" height="72" rx="12" fill="#FFFBEB" stroke="#FDE68A" filter="url(#sh)"/>
+<text x="483" y="196" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" fill="#92400E" font-weight="600">UserService / UserDao</text>
+<text x="483" y="218" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#78350F">普通 JavaBean：属性 + 方法</text>
+<text x="483" y="235" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#78350F">依赖关系写在 XML 里，由容器注入</text>
+
+<rect x="840" y="172" width="345" height="72" rx="12" fill="#FFFBEB" stroke="#FDE68A" filter="url(#sh)"/>
+<text x="858" y="196" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" fill="#92400E" font-weight="600">MyBeanFactoryPostProcessor</text>
+<text x="858" y="218" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#78350F">实例化之前改「图纸」BeanDefinition</text>
+<text x="858" y="235" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#78350F">MyBeanPostProcessor：改「成品」Bean</text>
+
+<rect x="1215" y="172" width="345" height="72" rx="12" fill="#FFFBEB" stroke="#FDE68A" filter="url(#sh)"/>
+<text x="1233" y="196" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" fill="#92400E" font-weight="600">CustomEventListener ❻</text>
+<text x="1233" y="218" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#78350F">实现 ApplicationListener 监听事件</text>
+<text x="1233" y="235" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#78350F">ProxyBeanFactory ❷：造 JDK 动态代理</text>
+
+<!-- ============ Band 2 · Context 层 ============ -->
+<rect x="60" y="285" width="1520" height="272" rx="18" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="60" y="303" width="5" height="236" rx="2.5" fill="#6366F1"/>
+<circle cx="100" cy="315" r="14" fill="#6366F1"/>
+<text x="100" y="320" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">2</text>
+<text x="124" y="321" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="18" fill="#0F172A" font-weight="700">Context 上下文层：总指挥（包办「读配置 → 造工厂 → 调扩展点 → 发事件」）</text>
+<text x="1556" y="317" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#64748B" text-anchor="end">context / context.event / context.support</text>
+
+<!-- 左：继承链 -->
+<rect x="90" y="342" width="720" height="197" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+<text x="110" y="368" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#4338CA" font-weight="700">Context 继承链 ❹模板方法 ＋ ❼门面</text>
+
+<rect x="95" y="388" width="130" height="62" rx="8" fill="#FFFFFF" stroke="#C7D2FE" filter="url(#sh)"/>
+<text x="160" y="412" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10" fill="#312E81" font-weight="600" text-anchor="middle">ClassPathXml</text>
+<text x="160" y="427" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10" fill="#312E81" font-weight="600" text-anchor="middle">ApplicationContext</text>
+<text x="160" y="443" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#6366F1" text-anchor="middle">最终入口（最具体）</text>
+
+<rect x="240" y="388" width="130" height="62" rx="8" fill="#FFFFFF" stroke="#C7D2FE" filter="url(#sh)"/>
+<text x="305" y="412" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.5" fill="#312E81" font-weight="600" text-anchor="middle">AbstractXml</text>
+<text x="305" y="427" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.5" fill="#312E81" font-weight="600" text-anchor="middle">ApplicationContext</text>
+<text x="305" y="443" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#64748B" text-anchor="middle">只管「用 XML 配置」</text>
+
+<rect x="385" y="388" width="130" height="62" rx="8" fill="#FFFFFF" stroke="#C7D2FE" filter="url(#sh)"/>
+<text x="450" y="408" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="8.6" fill="#312E81" font-weight="600" text-anchor="middle">AbstractRefreshable</text>
+<text x="450" y="422" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.5" fill="#312E81" font-weight="600" text-anchor="middle">ApplicationContext</text>
+<text x="450" y="443" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#64748B" text-anchor="middle">负责「建 BeanFactory」</text>
+
+<rect x="530" y="388" width="130" height="62" rx="8" fill="#EEF2FF" stroke="#A5B4FC" filter="url(#sh)"/>
+<text x="595" y="412" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.5" fill="#312E81" font-weight="600" text-anchor="middle">Abstract</text>
+<text x="595" y="427" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.5" fill="#312E81" font-weight="600" text-anchor="middle">ApplicationContext</text>
+<text x="595" y="443" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#4338CA" text-anchor="middle">refresh() 九步骨架 ❹</text>
+
+<rect x="675" y="388" width="130" height="62" rx="8" fill="#FFFFFF" stroke="#94A3B8" stroke-dasharray="4 3" filter="url(#sh)"/>
+<text x="740" y="412" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.5" fill="#334155" font-weight="600" text-anchor="middle">ApplicationContext</text>
+<text x="740" y="427" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#64748B" text-anchor="middle">（接口）❼门面</text>
+<text x="740" y="443" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#64748B" text-anchor="middle">getBean / publishEvent</text>
+
+<line x1="225" y1="419" x2="238" y2="419" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+<line x1="370" y1="419" x2="383" y2="419" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+<line x1="515" y1="419" x2="528" y2="419" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+<line x1="660" y1="419" x2="673" y2="419" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+<text x="452" y="383" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="10" fill="#64748B" text-anchor="middle">extends（越往右越抽象）</text>
+
+<text x="110" y="480" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">refresh() 模板：建 BeanFactory → 调 BeanFactoryPostProcessor → 注册 BeanPostProcessor</text>
+<text x="110" y="500" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">→ 初始化事件广播器与监听器 → 预实例化单例 → 发 ContextRefreshedEvent（子类只填 refreshBeanFactory()）</text>
+
+<!-- 右：事件机制 -->
+<rect x="840" y="342" width="700" height="197" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+<text x="860" y="368" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#4338CA" font-weight="700">事件机制 ❻观察者模式（发布 - 订阅）</text>
+
+<rect x="855" y="388" width="200" height="65" rx="8" fill="#FFFFFF" stroke="#C7D2FE" filter="url(#sh)"/>
+<text x="955" y="410" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#312E81" font-weight="600" text-anchor="middle">ApplicationEvent</text>
+<text x="955" y="430" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="10" fill="#64748B" text-anchor="middle">事件：ContextRefreshedEvent</text>
+<text x="955" y="445" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="10" fill="#64748B" text-anchor="middle">ContextClosedEvent / CustomEvent</text>
+
+<rect x="1090" y="388" width="200" height="65" rx="8" fill="#EEF2FF" stroke="#A5B4FC" filter="url(#sh)"/>
+<text x="1190" y="410" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.6" fill="#312E81" font-weight="600" text-anchor="middle">SimpleApplicationEvent</text>
+<text x="1190" y="425" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.6" fill="#312E81" font-weight="600" text-anchor="middle">Multicaster（广播器）</text>
+<text x="1190" y="445" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="10" fill="#4338CA" text-anchor="middle">持有所有监听器并分发</text>
+
+<rect x="1325" y="388" width="200" height="65" rx="8" fill="#FFFFFF" stroke="#C7D2FE" filter="url(#sh)"/>
+<text x="1425" y="410" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#312E81" font-weight="600" text-anchor="middle">ApplicationListener</text>
+<text x="1425" y="430" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="10" fill="#64748B" text-anchor="middle">监听器：onApplicationEvent()</text>
+<text x="1425" y="445" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="10" fill="#64748B" text-anchor="middle">泛型约定只收自己关心的事件</text>
+
+<line x1="1055" y1="419" x2="1088" y2="419" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="1290" y1="419" x2="1323" y2="419" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1071" y="412" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#64748B" text-anchor="middle">发布</text>
+<text x="1307" y="412" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#64748B" text-anchor="middle">回调</text>
+
+<text x="860" y="480" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">容器每到关键节点就 publishEvent() 喊一嗓子：「刷新完了！」「要关了！」</text>
+<text x="860" y="500" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">监听器各干各的，容器完全不知道也不关心谁在听 —— 这就是解耦</text>
+<text x="860" y="522" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="10.5" fill="#94A3B8">ApplicationContextAware：顺带把「容器自己」塞回 Bean（ApplicationContextAwareProcessor）</text>
+
+<!-- ============ Band 3 · Beans 核心层 ============ -->
+<rect x="60" y="582" width="1520" height="303" rx="18" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="60" y="600" width="5" height="267" rx="2.5" fill="#0EA5E9"/>
+<circle cx="100" cy="612" r="14" fill="#0EA5E9"/>
+<text x="100" y="617" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">3</text>
+<text x="124" y="618" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="18" fill="#0F172A" font-weight="700">Beans 核心层：Bean 工厂（IoC 容器本体，「对象的制造车间」）</text>
+<text x="1556" y="614" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#64748B" text-anchor="end">beans.factory / beans.factory.config / beans.factory.support</text>
+
+<!-- A: 接口族 -->
+<rect x="90" y="640" width="500" height="228" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+<text x="110" y="665" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#0369A1" font-weight="700">接口族：一份「能力清单」 ❼门面式拆分</text>
+
+<rect x="105" y="682" width="115" height="52" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="162" y="704" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#0C4A6E" font-weight="600" text-anchor="middle">BeanFactory</text>
+<text x="162" y="722" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#64748B" text-anchor="middle">getBean 顶层接口</text>
+
+<rect x="235" y="682" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="320" y="701" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.2" fill="#0C4A6E" font-weight="600" text-anchor="middle">ListableBeanFactory</text>
+<text x="320" y="715" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.2" fill="#0C4A6E" font-weight="600" text-anchor="middle">HierarchicalBeanFactory</text>
+<text x="320" y="729" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9" fill="#64748B" text-anchor="middle">批量查 / 父子容器</text>
+
+<rect x="415" y="682" width="165" height="52" rx="8" fill="#E0F2FE" stroke="#38BDF8" filter="url(#sh)"/>
+<text x="497" y="701" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="8.8" fill="#0C4A6E" font-weight="600" text-anchor="middle">ConfigurableBeanFactory</text>
+<text x="497" y="715" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="8.8" fill="#0C4A6E" font-weight="600" text-anchor="middle">ConfigurableListableBeanFactory</text>
+<text x="497" y="729" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9" fill="#0369A1" text-anchor="middle">工厂的「完整能力」汇总</text>
+
+<line x1="220" y1="708" x2="233" y2="708" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+<line x1="405" y1="708" x2="413" y2="708" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+
+<rect x="105" y="756" width="175" height="52" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="192" y="778" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10.5" fill="#0C4A6E" font-weight="600" text-anchor="middle">SingletonBeanRegistry</text>
+<text x="192" y="796" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#64748B" text-anchor="middle">单例池的接口 ❸</text>
+
+<rect x="310" y="756" width="195" height="52" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="407" y="775" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.2" fill="#0C4A6E" font-weight="600" text-anchor="middle">AutowireCapableBeanFactory</text>
+<text x="407" y="796" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#64748B" text-anchor="middle">「自动装配 + 初始化」能力</text>
+
+<path d="M192,756 L192,740 L497,740 L497,736" fill="none" stroke="#94A3B8" stroke-width="1.3" marker-end="url(#impl)"/>
+
+<text x="110" y="838" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="10.8" fill="#64748B">把一个「大而全的工厂」拆成一叠小接口，用哪个能力就看哪个接口 —— 接口隔离原则</text>
+<text x="110" y="856" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="10.8" fill="#94A3B8">ApplicationContext 也继承这些接口，所以「上下文」本身就能当工厂用（门面 ❼）</text>
+
+<!-- B: 实现链 -->
+<rect x="615" y="640" width="520" height="228" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+<text x="635" y="665" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#0369A1" font-weight="700">实现继承链 ❹模板方法 ＋ ❸单例缓存</text>
+
+<rect x="630" y="682" width="245" height="52" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="752" y="703" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10.5" fill="#0C4A6E" font-weight="600" text-anchor="middle">DefaultSingletonBeanRegistry</text>
+<text x="752" y="722" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#64748B" text-anchor="middle">singletonObjects 单例池 ❸（只造一次）</text>
+
+<rect x="890" y="682" width="240" height="52" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="1010" y="703" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10.5" fill="#0C4A6E" font-weight="600" text-anchor="middle">FactoryBeanRegistrySupport</text>
+<text x="1010" y="722" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.5" fill="#64748B" text-anchor="middle">缓存 FactoryBean 造出来的「硬菜」 ❷</text>
+
+<rect x="630" y="756" width="152" height="52" rx="8" fill="#E0F2FE" stroke="#38BDF8" filter="url(#sh)"/>
+<text x="706" y="777" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10" fill="#0C4A6E" font-weight="600" text-anchor="middle">AbstractBeanFactory</text>
+<text x="706" y="796" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#0369A1" text-anchor="middle">doGetBean 骨架 ❹</text>
+
+<rect x="795" y="756" width="152" height="52" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="871" y="773" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="8.4" fill="#0C4A6E" font-weight="600" text-anchor="middle">AbstractAutowire</text>
+<text x="871" y="786" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="8.4" fill="#0C4A6E" font-weight="600" text-anchor="middle">CapableBeanFactory</text>
+<text x="871" y="800" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9" fill="#64748B" text-anchor="middle">建对象/填属性/初始化</text>
+
+<rect x="960" y="756" width="152" height="52" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="1036" y="773" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="8.8" fill="#0C4A6E" font-weight="600" text-anchor="middle">DefaultListable</text>
+<text x="1036" y="786" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="8.8" fill="#0C4A6E" font-weight="600" text-anchor="middle">BeanFactory</text>
+<text x="1036" y="800" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9" fill="#64748B" text-anchor="middle">最终大管家（可直接用）</text>
+
+<line x1="875" y1="708" x2="888" y2="708" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+<path d="M1010,734 L1010,746 L706,746 L706,754" fill="none" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+<line x1="782" y1="782" x2="793" y2="782" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+<line x1="947" y1="782" x2="958" y2="782" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+
+<text x="635" y="838" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="10.8" fill="#64748B">doGetBean：先查单例池 → 没有就 createBean（造对象→填属性→初始化→登记销毁）</text>
+<text x="635" y="856" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="10.8" fill="#94A3B8">「做什么」写在父类，「怎么做」留给子类 —— 每层只干一件事</text>
+
+<!-- C: 伙伴类 -->
+<rect x="1160" y="640" width="390" height="228" rx="12" fill="#F8FAFC" stroke="#E2E8F0"/>
+<text x="1180" y="665" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#0369A1" font-weight="700">关键伙伴类</text>
+
+<rect x="1175" y="682" width="180" height="75" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="1190" y="703" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.6" fill="#0C4A6E" font-weight="600">InstantiationStrategy ❺</text>
+<text x="1190" y="722" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B">「怎么 new 对象」可切换：</text>
+<text x="1190" y="739" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B">Simple（反射）/ Cglib（子类）</text>
+
+<rect x="1368" y="682" width="170" height="75" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="1383" y="703" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.6" fill="#0C4A6E" font-weight="600">BeanDefinition</text>
+<text x="1383" y="722" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B">Bean 的「图纸」：class、</text>
+<text x="1383" y="739" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B">属性、init/destroy 方法</text>
+
+<rect x="1175" y="772" width="180" height="75" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="1190" y="793" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.6" fill="#0C4A6E" font-weight="600">XmlBeanDefinitionReader</text>
+<text x="1190" y="812" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B">读 spring.xml，把 XML 标签</text>
+<text x="1190" y="829" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B">翻译成一张张 BeanDefinition</text>
+
+<rect x="1368" y="772" width="170" height="75" rx="8" fill="#FFFFFF" stroke="#7DD3FC" filter="url(#sh)"/>
+<text x="1383" y="793" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.6" fill="#0C4A6E" font-weight="600">FactoryBean ❷</text>
+<text x="1383" y="812" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B">复杂对象开「小灶」：</text>
+<text x="1383" y="829" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B">getObject() 里随意发挥</text>
+
+<!-- ============ Band 4 · 资源层 ============ -->
+<rect x="60" y="912" width="1520" height="136" rx="18" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="60" y="930" width="5" height="100" rx="2.5" fill="#10B981"/>
+<circle cx="100" cy="942" r="14" fill="#10B981"/>
+<text x="100" y="947" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">4</text>
+<text x="124" y="948" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="18" fill="#0F172A" font-weight="700">资源层：配置从哪里读（同一个 Resource 接口，三种来源）</text>
+<text x="1556" y="944" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12" fill="#64748B" text-anchor="end">beans.core.io</text>
+
+<rect x="95" y="968" width="150" height="52" rx="8" fill="#ECFDF5" stroke="#6EE7B7" filter="url(#sh)"/>
+<text x="170" y="990" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#065F46" font-weight="600" text-anchor="middle">Resource</text>
+<text x="170" y="1008" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B" text-anchor="middle">统一接口 getInputStream()</text>
+
+<rect x="300" y="968" width="150" height="52" rx="8" fill="#FFFFFF" stroke="#6EE7B7" filter="url(#sh)"/>
+<text x="375" y="990" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.6" fill="#065F46" font-weight="600" text-anchor="middle">ClassPathResource</text>
+<text x="375" y="1008" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B" text-anchor="middle">classpath: 从 jar 包里读</text>
+
+<rect x="465" y="968" width="150" height="52" rx="8" fill="#FFFFFF" stroke="#6EE7B7" filter="url(#sh)"/>
+<text x="540" y="990" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.6" fill="#065F46" font-weight="600" text-anchor="middle">FileSystemResource</text>
+<text x="540" y="1008" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B" text-anchor="middle">本地磁盘文件</text>
+
+<rect x="630" y="968" width="150" height="52" rx="8" fill="#FFFFFF" stroke="#6EE7B7" filter="url(#sh)"/>
+<text x="705" y="990" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="9.6" fill="#065F46" font-weight="600" text-anchor="middle">UrlResource</text>
+<text x="705" y="1008" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B" text-anchor="middle">http(s):// 远程地址</text>
+
+<line x1="300" y1="994" x2="248" y2="994" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+<line x1="465" y1="994" x2="413" y2="994" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+<line x1="630" y1="994" x2="578" y2="994" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+
+<rect x="880" y="968" width="170" height="52" rx="8" fill="#ECFDF5" stroke="#6EE7B7" filter="url(#sh)"/>
+<text x="965" y="990" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10.4" fill="#065F46" font-weight="600" text-anchor="middle">ResourceLoader</text>
+<text x="965" y="1008" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#64748B" text-anchor="middle">getResource(location)</text>
+
+<rect x="1100" y="968" width="240" height="52" rx="8" fill="#D1FAE5" stroke="#34D399" filter="url(#sh)"/>
+<text x="1220" y="990" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10.4" fill="#065F46" font-weight="600" text-anchor="middle">DefaultResourceLoader</text>
+<text x="1220" y="1008" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.3" fill="#047857" text-anchor="middle">看前缀分发：简单工厂 ❶</text>
+
+<line x1="1070" y1="994" x2="1053" y2="994" stroke="#475569" stroke-width="1.4" marker-end="url(#impl)"/>
+<path d="M1100,1006 L1030,1006 L1030,1032 L540,1032 L540,1022" fill="none" stroke="#94A3B8" stroke-width="1.3" marker-end="url(#arrow)"/>
+<text x="820" y="1030" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="9.6" fill="#64748B" text-anchor="middle">按 location 前缀决定造哪种 Resource</text>
+<text x="1400" y="990" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#475569" text-anchor="middle">XmlBeanDefinitionReader（第 3 层）</text>
+<text x="1400" y="1010" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#475569" text-anchor="middle">就是用 ResourceLoader 读 spring.xml</text>
+
+<!-- ============ 设计模式速查 ============ -->
+<text x="60" y="1092" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="22" fill="#0F172A" font-weight="700">设计模式速查表 · 每个模式：在哪用 ＋ 一个比喻</text>
+<text x="1580" y="1092" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="12.5" fill="#64748B" text-anchor="end">模式不是背出来的，是「碰到问题 → 有人总结过套路」</text>
+
+<!-- 卡片 1 工厂 -->
+<rect x="60" y="1112" width="360" height="192" rx="14" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+<rect x="60" y="1112" width="5" height="192" rx="2.5" fill="#F59E0B"/>
+<circle cx="98" cy="1146" r="15" fill="#F59E0B"/>
+<text x="98" y="1151" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">1</text>
+<text x="124" y="1142" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="16" fill="#0F172A" font-weight="700">工厂模式</text>
+<text x="124" y="1161" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#94A3B8">Factory</text>
+<text x="82" y="1190" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">在哪：BeanFactory#getBean(name) 报名字拿对象，</text>
+<text x="82" y="1209" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">调用方永远不需要自己 new。</text>
+<text x="82" y="1237" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#B45309" font-weight="600">比喻：下馆子报菜名就行，</text>
+<text x="82" y="1256" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#B45309" font-weight="600">怎么炒、火候几成，是后厨的事。</text>
+<text x="82" y="1285" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10" fill="#94A3B8">AbstractBeanFactory#doGetBean</text>
+
+<!-- 卡片 2 工厂方法 -->
+<rect x="445" y="1112" width="360" height="192" rx="14" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+<rect x="445" y="1112" width="5" height="192" rx="2.5" fill="#F59E0B"/>
+<circle cx="483" cy="1146" r="15" fill="#F59E0B"/>
+<text x="483" y="1151" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">2</text>
+<text x="509" y="1142" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="16" fill="#0F172A" font-weight="700">工厂方法模式</text>
+<text x="509" y="1161" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#94A3B8">Factory Method</text>
+<text x="467" y="1190" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">在哪：FactoryBean#getObject()。复杂对象的创建</text>
+<text x="467" y="1209" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">过程，交给一个专门的小工厂对象去造。</text>
+<text x="467" y="1237" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#B45309" font-weight="600">比喻：普通菜大锅炒，硬菜请「私厨」</text>
+<text x="467" y="1256" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#B45309" font-weight="600">单开小灶，比如 ProxyBeanFactory 造代理。</text>
+<text x="467" y="1285" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10" fill="#94A3B8">ProxyBeanFactory#getObject / FactoryBeanRegistrySupport</text>
+
+<!-- 卡片 3 单例 -->
+<rect x="830" y="1112" width="360" height="192" rx="14" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+<rect x="830" y="1112" width="5" height="192" rx="2.5" fill="#10B981"/>
+<circle cx="868" cy="1146" r="15" fill="#10B981"/>
+<text x="868" y="1151" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">3</text>
+<text x="894" y="1142" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="16" fill="#0F172A" font-weight="700">单例模式</text>
+<text x="894" y="1161" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#94A3B8">Singleton</text>
+<text x="852" y="1190" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">在哪：DefaultSingletonBeanRegistry 的 Map，</text>
+<text x="852" y="1209" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">同名 Bean 只造一次，之后全从池子里取。</text>
+<text x="852" y="1237" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#047857" font-weight="600">比喻：餐厅员工花名册，人只登记一次，</text>
+<text x="852" y="1256" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#047857" font-weight="600">之后找人翻册子，不用满世界喊人。</text>
+<text x="852" y="1285" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10" fill="#94A3B8">getSingleton / registerSingleton</text>
+
+<!-- 卡片 4 模板方法 -->
+<rect x="1215" y="1112" width="360" height="192" rx="14" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+<rect x="1215" y="1112" width="5" height="192" rx="2.5" fill="#6366F1"/>
+<circle cx="1253" cy="1146" r="15" fill="#6366F1"/>
+<text x="1253" y="1151" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">4</text>
+<text x="1279" y="1142" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="16" fill="#0F172A" font-weight="700">模板方法模式</text>
+<text x="1279" y="1161" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#94A3B8">Template Method</text>
+<text x="1237" y="1190" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">在哪：AbstractApplicationContext#refresh() 九步</text>
+<text x="1237" y="1209" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">骨架定死，留 refreshBeanFactory() 给子类填空。</text>
+<text x="1237" y="1237" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#4F46E5" font-weight="600">比喻：中央厨房的 SOP 流程图，</text>
+<text x="1237" y="1256" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#4F46E5" font-weight="600">各分店照着做，只填「本地食材哪买」那格。</text>
+<text x="1237" y="1285" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10" fill="#94A3B8">refresh() / doGetBean()</text>
+
+<!-- 卡片 5 策略 -->
+<rect x="60" y="1327" width="360" height="192" rx="14" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+<rect x="60" y="1327" width="5" height="192" rx="2.5" fill="#0EA5E9"/>
+<circle cx="98" cy="1361" r="15" fill="#0EA5E9"/>
+<text x="98" y="1366" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">5</text>
+<text x="124" y="1357" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="16" fill="#0F172A" font-weight="700">策略模式</text>
+<text x="124" y="1376" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#94A3B8">Strategy</text>
+<text x="82" y="1405" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">在哪：InstantiationStrategy 接口，两个实现</text>
+<text x="82" y="1424" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">（反射 / Cglib）随 set 随换。</text>
+<text x="82" y="1452" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#0369A1" font-weight="600">比喻：切菜流程不变，刀随便换 ——</text>
+<text x="82" y="1471" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#0369A1" font-weight="600">流程代码不写 if/else，换刀只换一行。</text>
+<text x="82" y="1500" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10" fill="#94A3B8">setInstantiationStrategy(...)</text>
+
+<!-- 卡片 6 观察者 -->
+<rect x="445" y="1327" width="360" height="192" rx="14" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+<rect x="445" y="1327" width="5" height="192" rx="2.5" fill="#0EA5E9"/>
+<circle cx="483" cy="1361" r="15" fill="#0EA5E9"/>
+<text x="483" y="1366" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">6</text>
+<text x="509" y="1357" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="16" fill="#0F172A" font-weight="700">观察者模式</text>
+<text x="509" y="1376" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#94A3B8">Observer</text>
+<text x="467" y="1405" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">在哪：ApplicationEvent + ApplicationListener ＋</text>
+<text x="467" y="1424" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">Multicaster，容器发事件，监听器自动响应。</text>
+<text x="467" y="1452" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#0369A1" font-weight="600">比喻：广播站喊一嗓子，谁订阅谁听到，</text>
+<text x="467" y="1471" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#0369A1" font-weight="600">广播站根本不用认识每个听众。</text>
+<text x="467" y="1500" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10" fill="#94A3B8">publishEvent → multicastEvent → onApplicationEvent</text>
+
+<!-- 卡片 7 门面 -->
+<rect x="830" y="1327" width="360" height="192" rx="14" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+<rect x="830" y="1327" width="5" height="192" rx="2.5" fill="#8B5CF6"/>
+<circle cx="868" cy="1361" r="15" fill="#8B5CF6"/>
+<text x="868" y="1366" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">7</text>
+<text x="894" y="1357" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="16" fill="#0F172A" font-weight="700">门面模式</text>
+<text x="894" y="1376" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#94A3B8">Facade</text>
+<text x="852" y="1405" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">在哪：ApplicationContext 把「读配置 + 建工厂 +</text>
+<text x="852" y="1424" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">调扩展点 + 发事件」打包成一个 refresh()。</text>
+<text x="852" y="1452" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#6D28D9" font-weight="600">比喻：餐厅前台，一句话订位、点菜、结账，</text>
+<text x="852" y="1471" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#6D28D9" font-weight="600">后厨多乱都藏在门后。</text>
+<text x="852" y="1500" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10" fill="#94A3B8">new ClassPathXmlApplicationContext(...)</text>
+
+<!-- 卡片 8 代理 -->
+<rect x="1215" y="1327" width="360" height="192" rx="14" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+<rect x="1215" y="1327" width="5" height="192" rx="2.5" fill="#8B5CF6"/>
+<circle cx="1253" cy="1361" r="15" fill="#8B5CF6"/>
+<text x="1253" y="1366" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">8</text>
+<text x="1279" y="1357" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="16" fill="#0F172A" font-weight="700">代理模式</text>
+<text x="1279" y="1376" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" fill="#94A3B8">Proxy</text>
+<text x="1237" y="1405" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">在哪：ProxyBeanFactory 用 JDK 动态代理给</text>
+<text x="1237" y="1424" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#475569">IUserDao 套壳；Cglib 用子类代理造 Bean。</text>
+<text x="1237" y="1452" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#6D28D9" font-weight="600">比喻：不改原菜谱，请个中间商在端菜前</text>
+<text x="1237" y="1471" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#6D28D9" font-weight="600">加点料（加日志、改返回值）。</text>
+<text x="1237" y="1500" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="10" fill="#94A3B8">Proxy.newProxyInstance(...) / CglibSubclassing...</text>
+
+<!-- 底部补充条 -->
+<rect x="60" y="1538" width="1520" height="48" rx="12" fill="#EEF2FF" stroke="#C7D2FE"/>
+<text x="82" y="1560" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#3730A3" font-weight="600">彩蛋：还有两个「小而美」的模式 ——</text>
+<text x="82" y="1578" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11.5" fill="#3730A3">适配器模式：DisposableBeanAdapter 把 XML 里的 destroy-method 统一成 destroy() 调用（万能插头）；　责任链思路：BeanPostProcessor 列表让 Bean 出厂前依次过一排「加工工位」。</text>
+</svg>
